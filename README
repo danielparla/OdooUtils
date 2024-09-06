@@ -1,0 +1,45 @@
+Prompt:
+Estoy actualizando un módulo de Odoo llamado qdq_crm.
+Quiero añadir una acción de servidor en el modelo CRM que abra un wizard con 2 campos, team_id y user_id, ambos relacionados con el modelo CRM. También habrá un botón de aceptar y otro de cancelar.
+El campo user_id estará filtrado por team_id.
+Al rellenar los campos y pulsar aceptar los registros seleccionados previamente del modelo CRM se actualizarán.
+Crea el código de python y xml necesario para que funcione, además de añadir los pasos para implementarlos en mi repositorio.
+
+Respuesta:
+Vamos a crear el código necesario para implementar esta funcionalidad en tu módulo de Odoo qdq_crm. Primero, crearemos el wizard, luego la acción del servidor, y finalmente te daré los pasos para implementarlo en tu repositorio.
+Empecemos con el código Python para el wizard:
+(Python code)
+Ahora, creemos el XML para la vista del wizard y la acción del servidor:
+(XML code)
+Ahora, te daré los pasos para implementar estos cambios en tu repositorio:
+
+Crea un nuevo directorio llamado wizards en tu módulo qdq_crm si aún no existe.
+Crea un nuevo archivo update_crm_wizard.py en el directorio wizards y copia el contenido del primer artefacto en él.
+Crea un archivo __init__.py en el directorio wizards (si no existe) y añade la siguiente línea:
+from . import update_crm_wizard
+
+Actualiza el archivo __init__.py en la raíz de tu módulo para importar el nuevo wizard:
+from . import wizards
+
+Crea un nuevo archivo update_crm_wizard_views.xml en el directorio views y copia el contenido del segundo artefacto en él.
+Actualiza el archivo __manifest__.py de tu módulo para incluir los nuevos archivos:
+{
+    # ... otros datos del manifiesto ...
+    'data': [
+        # ... otros archivos de datos ...
+        'views/update_crm_wizard_views.xml',
+    ],
+}
+
+Actualiza tu módulo en Odoo:
+
+Reinicia el servidor de Odoo.
+Actualiza la lista de aplicaciones en la interfaz de Odoo.
+Busca tu módulo qdq_crm y haz clic en "Actualizar".
+
+Prueba la nueva funcionalidad:
+
+Ve a la vista de lista de CRM.
+Selecciona uno o varios registros.
+Busca la nueva acción "Update CRM" en el menú de acciones.
+Verifica que el wizard se abre correctamente y que puedes actualizar los registros.
